@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=splint
+POSTGRES_USER=DjcgZILqRhBYqdLRsjarDHcgVErDmdNJ
+POSTGRES_PASSWORD=TzsxsZu4pObSV6RzbIiA8JsEA9o8lBUDJJRbjJ0rqp4c0bkn1mugtJFnw2JGZkbF
