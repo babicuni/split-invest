@@ -27,6 +27,6 @@ drf-spectacular==0.27.1  # https://github.com/tfranzel/drf-spectacular
 # Custom
 # ------------------------------------------------------------------------------
 urllib3==1.26.18
-certifi==2023.11.17
+certifi==2024.2.2
 polygon-api-client==1.13.4
 drf-yasg==1.21.6
