@@ -9,4 +9,6 @@ class EventSerializer(serializers.ModelSerializer):
         fields = (
             "id",
             "company",
+            "stock_change_variance",
+            "variance",
         )
