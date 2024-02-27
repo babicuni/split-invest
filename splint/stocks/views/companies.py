@@ -5,7 +5,7 @@ from splint.stocks.models.company import Company
 from splint.stocks.seralizers.companies import CompanySerializer
 
 
-class EventViewSet(viewsets.ModelViewSet):
+class CompaniesViewSet(viewsets.ModelViewSet):
     pagination_class = StandardResultsSetPagination
     serializer_class = CompanySerializer
     queryset = Company.objects.order_by("-created")
