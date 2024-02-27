@@ -86,6 +86,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "splint.users",
     # Your stuff: custom apps go here
+    "splint.stocks",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -342,3 +343,4 @@ SPECTACULAR_SETTINGS = {
 }
 # Your stuff...
 # ------------------------------------------------------------------------------
+POLYGON_API_KEY = env("DJANGO_POLYGON_API_KEY", default="F_PRJRnJiyK20JFnCY0JQukp_q1gnTax")

@@ -23,3 +23,10 @@ djangorestframework==3.14.0  # https://github.com/encode/django-rest-framework
 django-cors-headers==4.3.1  # https://github.com/adamchainz/django-cors-headers
 # DRF-spectacular for api documentation
 drf-spectacular==0.27.1  # https://github.com/tfranzel/drf-spectacular
+
+# Custom
+# ------------------------------------------------------------------------------
+urllib3==1.26.18
+certifi==2023.11.17
+polygon-api-client==1.13.4
+drf-yasg==1.21.6
