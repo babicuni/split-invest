@@ -293,9 +293,17 @@ CELERY_TASK_SOFT_TIME_LIMIT = 60
 CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
 # https://docs.celeryq.dev/en/stable/userguide/configuration.html#beat-scheduler
 CELERY_BEAT_SCHEDULE = {
-    "inspect-running-spaces": {
-        "task": "splint.stocks.tasks.periodic.analyze_global_stock_market",
+    "inspect-stocks-every-minute": {
+        "task": "splint.stocks.tasks.periodic.analyze_global_stock_market_every_minute",
         "schedule": timedelta(minutes=1),
+    },
+    "inspect-stocks-every-six-hours": {
+        "task": "splint.stocks.tasks.periodic.analyze_global_stock_market_every_six_hours",
+        "schedule": timedelta(hours=6),
+    },
+    "inspect-stocks-every-day": {
+        "task": "splint.stocks.tasks.periodic.analyze_global_stock_market_every_day",
+        "schedule": timedelta(hours=1),
     },
 }
 # https://docs.celeryq.dev/en/stable/userguide/configuration.html#worker-send-task-events
