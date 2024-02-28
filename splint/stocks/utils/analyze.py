@@ -24,28 +24,28 @@ def analyze_stock_data(client, time_delta):
             limit=1,
         )
         if response:
-            logger.info(f"Ticker {company.ticker_symbol} avrg stock value"
-                        f" data in the past {time_delta} minutes: {response.data}")
-            data = response.data
-            new_stats = Stats.objects.create(
-                company=company,
-                stat_aggregation_interval=time_delta,
-                stock_high_value=data.get("h"),
-                stock_low_value = data.get("l"),
-            )
-            old_data = Stats.objects.filter(
-                company=company,
-                stat_aggregation_interval=time_delta,
-            ).order_by("-created").first()
-            if old_data:
-                old_avrg = (old_data.stock_high_value - old_data.stock_low_value) / 2
-                new_avrg = (new_stats.stock_high_value - new_stats.stock_low_value) / 2
-                calculation = percent_change(
-                    old_avrg, new_avrg
+            for data in response:
+                logger.info(f"Ticker {company.ticker_symbol} avrg stock value"
+                            f" data in the past {time_delta} minutes: {data}")
+                new_stats = Stats.objects.create(
+                    company=company,
+                    stat_aggregation_interval=time_delta,
+                    stock_high_value=data.get("h"),
+                    stock_low_value = data.get("l"),
                 )
-                if abs(calculation) > 3:
-                    Event.objects.create(
-                        company=company,
-                        variance=calculation,
-                        stock_change_variance=time_delta,
+                old_data = Stats.objects.filter(
+                    company=company,
+                    stat_aggregation_interval=time_delta,
+                ).order_by("-created").first()
+                if old_data:
+                    old_avrg = (old_data.stock_high_value - old_data.stock_low_value) / 2
+                    new_avrg = (new_stats.stock_high_value - new_stats.stock_low_value) / 2
+                    calculation = percent_change(
+                        old_avrg, new_avrg
                     )
+                    if abs(calculation) > 3:
+                        Event.objects.create(
+                            company=company,
+                            variance=calculation,
+                            stock_change_variance=time_delta,
+                        )
